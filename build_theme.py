@@ -89,7 +89,7 @@ NAME_MAP = {
     "subtext0": "grey-3",
     "overlay2": "grey-4",
     "subtext1": "grey-4",
-    "text": "fg-0",
+    "text": "fg-1",
     "pink": "magenta",
     "flamingo": "magenta",
     "rosewater": "orange",
@@ -155,6 +155,42 @@ APPENDED_RULES = """
 
 .k_ui_toggle_switch input:checked ~ .k_ui_toggle_switch_bar::after {
   background-color: var(--bg-0);
+}
+
+._0_d_info_ranking.k_ui_btn_group {
+  background-color: var(--bg-2);
+  color: var(--fg-1);
+}
+
+._0_d_info_ranking.k_ui_btn_group .k_ui_btn {
+  color: var(--fg-1);
+}
+
+._0_d_info_ranking.k_ui_btn_group #domain_rank_ban + .k_ui_btn {
+  color: var(--fg-1);
+}
+
+._0_d_info_ranking.k_ui_btn_group .k_ui_btn:hover,
+._0_d_info_ranking.k_ui_btn_group input:checked + .k_ui_btn {
+  background-color: var(--fg-1);
+  color: var(--bg-0);
+}
+
+._0_d_info_ranking.k_ui_btn_group #domain_rank_ban + .k_ui_btn:hover,
+._0_d_info_ranking.k_ui_btn_group #domain_rank_ban:checked + .k_ui_btn {
+  background-color: var(--br-red);
+  color: var(--bg-0);
+}
+
+._0_d_info_ranking.k_ui_btn_group #domain_rank_boost + .k_ui_btn:hover,
+._0_d_info_ranking.k_ui_btn_group #domain_rank_boost:checked + .k_ui_btn {
+  background-color: var(--br-blue);
+  color: var(--bg-0);
+}
+
+.ranking-note {
+  background-color: var(--bg-2);
+  color: var(--fg-1);
 }
 """
 

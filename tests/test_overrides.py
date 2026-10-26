@@ -32,7 +32,9 @@ COLOR_MIX = re.compile(
 
 
 def rule_property(css, selector, prop):
-    blocks = re.findall(re.escape(selector) + r"\s*\{(.*?)\}", css, re.DOTALL)
+    blocks = re.findall(
+        re.escape(selector) + r"\s*(?:,[^{}]*)?\{(.*?)\}", css, re.DOTALL
+    )
     assert blocks, f"no rule for {selector}"
     return re.search(rf"(?<![\w-]){prop}:\s*([^;]+);", blocks[-1]).group(1)
 
@@ -89,4 +91,71 @@ def test_enabled_toggle_is_visible(variant, surface):
 def test_unverified_dropdown_variables_left_alone():
     out = convert(FIXTURE)
     assert "--dd-hover-bg: var(--violet);" in out
-    assert "--dd-hover-color: var(--fg-0);" in out
+    assert "--dd-hover-color: var(--fg-1);" in out
+
+
+RANK = "._0_d_info_ranking.k_ui_btn_group"
+RANK_BAR = RANK
+RANK_BUTTON = f"{RANK} .k_ui_btn"
+RANK_BAN_BUTTON = f"{RANK} #domain_rank_ban + .k_ui_btn"
+RANK_SELECTED = f"{RANK} input:checked + .k_ui_btn"
+RANK_BAN_SELECTED = f"{RANK} #domain_rank_ban:checked + .k_ui_btn"
+RANK_BOOST_SELECTED = f"{RANK} #domain_rank_boost:checked + .k_ui_btn"
+RANK_NOTE = ".ranking-note"
+
+
+def test_domain_popup_rules_appended():
+    out = convert(FIXTURE)
+    assert rule_property(out, RANK_BAR, "background-color") == "var(--bg-2)"
+    assert rule_property(out, RANK_BAR, "color") == "var(--fg-1)"
+    assert rule_property(out, RANK_BUTTON, "color") == "var(--fg-1)"
+    assert rule_property(out, RANK_BAN_BUTTON, "color") == "var(--fg-1)"
+    assert rule_property(out, RANK_SELECTED, "background-color") == "var(--fg-1)"
+    assert rule_property(out, RANK_SELECTED, "color") == "var(--bg-0)"
+    assert rule_property(out, RANK_BAN_SELECTED, "background-color") == "var(--br-red)"
+    assert rule_property(out, RANK_BAN_SELECTED, "color") == "var(--bg-0)"
+    assert (
+        rule_property(out, RANK_BOOST_SELECTED, "background-color") == "var(--br-blue)"
+    )
+    assert rule_property(out, RANK_BOOST_SELECTED, "color") == "var(--bg-0)"
+    assert rule_property(out, RANK_NOTE, "background-color") == "var(--bg-2)"
+    assert rule_property(out, RANK_NOTE, "color") == "var(--fg-1)"
+
+
+@pytest.mark.parametrize("variant", ["light", "dark"])
+@pytest.mark.parametrize(
+    ("selector", "background_prop"),
+    [
+        (RANK_BAR, "background-color"),
+        (RANK_SELECTED, "background-color"),
+        (RANK_BOOST_SELECTED, "background-color"),
+        (RANK_NOTE, "background-color"),
+    ],
+)
+def test_domain_popup_text_is_readable(variant, selector, background_prop):
+    out = convert(FIXTURE)
+    palette = PALETTES[variant]
+    background = resolve(rule_property(out, selector, background_prop), palette)
+    text = resolve(rule_property(out, selector, "color"), palette)
+    assert contrast(text, background) >= 4.5
+
+
+@pytest.mark.parametrize("variant", ["light", "dark"])
+@pytest.mark.parametrize("selector", [RANK_BUTTON, RANK_BAN_BUTTON])
+def test_domain_popup_button_text_is_readable_on_bar(variant, selector):
+    out = convert(FIXTURE)
+    palette = PALETTES[variant]
+    bar = resolve(rule_property(out, RANK_BAR, "background-color"), palette)
+    text = resolve(rule_property(out, selector, "color"), palette)
+    assert contrast(text, bar) >= 4.5
+
+
+@pytest.mark.parametrize("variant", ["light", "dark"])
+def test_domain_popup_block_selected_text_is_legible(variant):
+    out = convert(FIXTURE)
+    palette = PALETTES[variant]
+    background = resolve(
+        rule_property(out, RANK_BAN_SELECTED, "background-color"), palette
+    )
+    text = resolve(rule_property(out, RANK_BAN_SELECTED, "color"), palette)
+    assert contrast(text, background) >= 4.0

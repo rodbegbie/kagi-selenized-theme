@@ -27,13 +27,13 @@
   --grey-4: #67787a;
   --color-scheme: light;
   --app-bg: var(--bg-0);
-  --app-text: var(--fg-0);
+  --app-text: var(--fg-1);
   --header-bg: var(--bg-1);
   --app-frame-bg: var(--app-bg);
   --landing-bg: var(--app-bg);
   --app-bg-opac: color-mix(in srgb, var(--bg-0) 0%, transparent);
   --bottom-bar-bg: var(--yellow);
-  --white: var(--fg-0);
+  --white: var(--fg-1);
   --graphite: var(--bg-0);
   --graphite-25: var(--grey-4);
   --graphite-50: var(--magenta);
@@ -49,7 +49,7 @@
   --graphite-850: var(--cyan);
   --graphite-900: var(--blue);
   --graphite-950: var(--violet);
-  --graphite-1000: var(--fg-0);
+  --graphite-1000: var(--fg-1);
   --chrome-25: var(--orange);
   --chrome-50: var(--magenta);
   --chrome-70: var(--magenta);
@@ -64,14 +64,14 @@
   --chrome-850: var(--cyan);
   --chrome-900: var(--blue);
   --chrome-950: var(--violet);
-  --chrome-1000: var(--fg-0);
+  --chrome-1000: var(--fg-1);
   --purple-300: var(--violet);
   --purple-400: var(--blue);
   --purple-500: var(--cyan);
   --purple-600: var(--cyan);
   --purple-800: var(--cyan);
   --purple-900: var(--green);
-  --primary: var(--fg-0);
+  --primary: var(--fg-1);
   --primary-25: var(--grey-4);
   --primary-50: var(--magenta);
   --primary-70: var(--magenta);
@@ -86,8 +86,8 @@
   --primary-850: var(--cyan);
   --primary-900: var(--blue);
   --primary-950: var(--violet);
-  --primary-1000: var(--fg-0);
-  --primary-g: var(--fg-0);
+  --primary-1000: var(--fg-1);
+  --primary-g: var(--fg-1);
   --primary-g-2: var(--red);
   --primary-g-6: var(--green);
   --primary-g-8: var(--cyan);
@@ -112,11 +112,11 @@
   --kagi-sky-i: var(--cyan);
   --kagi-orange: var(--br-red);
   --resultsummary-highlight: var(--grey-2);
-  --resultsummary-highlight_text: var(--fg-0);
-  --kagi-graphite: var(--fg-0);
+  --resultsummary-highlight_text: var(--fg-1);
+  --kagi-graphite: var(--fg-1);
   --kagi-graphite-s: var(--grey-4);
   --kagi-graphite-text: var(--bg-0);
-  --kagi-graphite-ia: var(--fg-0);
+  --kagi-graphite-ia: var(--fg-1);
   --kagi-graphite-ia-color: var(--bg-0);
   --inner-shadow: rgba(0, 0, 0, .05);
   --settings-app-inner-bg: var(--app-bg);
@@ -145,11 +145,11 @@
   --result-item-title-border: var(--orange);
   --result-item-title-border_hover: var(--primary-hover);
   --result-item-title-visited-border: var(--magenta);
-  --result-rank-icon-stroke_promoted: var(--fg-0);
+  --result-rank-icon-stroke_promoted: var(--fg-1);
   --result-item-highlight: var(--cyan);
-  --search-result-content-text: var(--fg-0);
+  --search-result-content-text: var(--fg-1);
   --search-result-url-link: var(--green);
-  --search-result-title: var(--fg-0);
+  --search-result-title: var(--fg-1);
   --search-result-title-hover: var(--primary-hover);
   --search-result-date-bg: var(--bg-2);
   --search-result-date-new-bg: var(--bg-0);
@@ -167,7 +167,7 @@
   --ranked-box-connection-insecure: var(--red);
   --ranked-box-tracker-desc-danger: var(--red);
   --ranked-box-tracker-desc-clear: var(--green);
-  --inline-header-title: var(--fg-0);
+  --inline-header-title: var(--fg-1);
   --inline-widget-bg: var(--bg-2);
   --inline-widget-hover-bg: var(--grey-1);
   --inline-header-border: var(--red);
@@ -181,10 +181,10 @@
   --provider-breakdown_speed1: var(--yellow);
   --provider-breakdown_speed2: var(--red);
   --provider-breakdown_speed3: var(--red);
-  --widget-progress_bar: var(--fg-0);
-  --translate-fc_icon: var(--fg-0);
+  --widget-progress_bar: var(--fg-1);
+  --translate-fc_icon: var(--fg-1);
   --rating-star_background: var(--grey-1);
-  --wiki-content-links: var(--fg-0);
+  --wiki-content-links: var(--fg-1);
   --m_sri_gap_color: var(--grey-1);
   --ai_chat_buble_a_bg: var(--kagi-accent);
   --ai_chat_buble_q_bg: var(--app-bg);
@@ -194,20 +194,20 @@
   --ai_chat_buble_q_text: var(--app-text);
   --ai_chat_input_text: var(--app-text);
   --ai_chat_input_button: var(--cyan);
-  --doggo-color-1: var(--fg-0);
+  --doggo-color-1: var(--fg-1);
   --doggo-bg-color: var(--app-bg);
   --doggo-stroke-color: var(--br-red);
   --landing-page-clouds-opacity: 1;
-  --quick-search-bg: var(--fg-0);
+  --quick-search-bg: var(--fg-1);
   --quick-search-icon: var(--bg-0);
-  --app-logo: var(--fg-0);
+  --app-logo: var(--fg-1);
   --app-logo-bg: var(--yellow);
   --filters-clear-btn-icon: var(--br-red);
   --filter-dd-bg: var(--grey-2);
   --k-tooltip-bg: var(--background-color-sky);
-  --k-tooltip-text: var(--fg-0);
+  --k-tooltip-text: var(--fg-1);
   --dd-hover-bg: var(--violet);
-  --dd-hover-color: var(--fg-0);
+  --dd-hover-color: var(--fg-1);
   --dd-list-input-bg: var(--input-bg);
   --not-found-bubble-bg: var(--grey-1);
   --site_info_bg: var(--app-bg);
@@ -218,7 +218,7 @@
   --code-s: var(--green);
   --code-cm-c1: var(--br-red);
   --code-n: var(--violet);
-  --code-p: var(--fg-0);
+  --code-p: var(--fg-1);
   --background-color-sky: var(--cyan);
   --checkbox-bg: var(--violet);
   --checkbox-check: var(--bg-1);
@@ -263,11 +263,11 @@
   --grey-4: #99abad;
   --color-scheme: dark;
   --app-bg: var(--bg-0);
-  --app-text: var(--fg-0);
+  --app-text: var(--fg-1);
   --header-bg: var(--app-bg);
   --inline-widget-bg: var(--bg-2);
   --inline-widget-hover-bg: var(--grey-1);
-  --btn-primary-bg: var(--fg-0);
+  --btn-primary-bg: var(--fg-1);
   --btn-primary-text: var(--bg-0);
   --checkbox-bg: var(--yellow);
   --checkbox-check: var(--bg-0);
@@ -276,7 +276,7 @@
   --onb_theme_light_preview_box: none;
   --onb_theme_moon_dark_preview_box: flex;
   --k-tooltip-bg: var(--background-color-sky);
-  --k-tooltip-text: var(--fg-0);
+  --k-tooltip-text: var(--fg-1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -309,11 +309,11 @@
     --grey-4: #99abad;
     --color-scheme: dark;
     --app-bg: var(--bg-0);
-    --app-text: var(--fg-0);
+    --app-text: var(--fg-1);
     --header-bg: var(--app-bg);
     --inline-widget-bg: var(--bg-2);
     --inline-widget-hover-bg: var(--grey-1);
-    --btn-primary-bg: var(--fg-0);
+    --btn-primary-bg: var(--fg-1);
     --btn-primary-text: var(--bg-0);
     --checkbox-bg: var(--yellow);
     --checkbox-check: var(--bg-0);
@@ -322,7 +322,7 @@
     --onb_theme_light_preview_box: none;
     --onb_theme_moon_dark_preview_box: flex;
     --k-tooltip-bg: var(--background-color-sky);
-    --k-tooltip-text: var(--fg-0);
+    --k-tooltip-text: var(--fg-1);
   }
 
 .landing-category-select .landing_cat_buttons > .nav-item.n_se::after, .landing-category-select .landing_cat_buttons > .nav-item.n_im::after, .landing-category-select .landing_cat_buttons > .nav-item.n_vi::after, .landing-category-select .landing_cat_buttons > .nav-item.n_ne::after, .landing-category-select .landing_cat_buttons > .nav-item.n_ma::after {
@@ -392,7 +392,7 @@
   .d-info-section-desc,
   .d-info-section,
   .ranked-c-adjust-title {
-    color: var(--fg-0);
+    color: var(--fg-1);
   }
 
   @media all and (min-device-width: 766px) {
@@ -427,11 +427,11 @@ body {
 
 #tags > .tag,
 #tags > .untagged {
-  color: var(--fg-0);
+  color: var(--fg-1);
 }
 
 #tags #tags-add {
-  color: var(--fg-0);
+  color: var(--fg-1);
 }
 
 .results_summary_text_box sup > a {
@@ -495,7 +495,7 @@ header .header-btn:hover {
 span.domain,
 #chat_box .chat_bubble .sources .domain {
   background-color: var(--bg-2) !important;
-  color: var(--fg-0) !important;
+  color: var(--fg-1) !important;
   padding: 2px 4px !important;
   border-radius: 3px !important;
 }
@@ -511,7 +511,7 @@ span.__domain-name,
 .ranked-box-wrapper,
 .d-info-body,
 .ranked-c-adjust-title {
-  color: var(--fg-0);
+  color: var(--fg-1);
 }
 
 .k_ui_toggle_switch.--enabled .k_ui_toggle_switch_bar {
@@ -631,7 +631,7 @@ header .header-btn:hover {
 
 .promptOptionsSelector .custom-assistants li.option,
 .promptOptionsSelector .default-assistants li.option {
-  color: var(--fg-0);
+  color: var(--fg-1);
 }
 
 #chat_box > div:nth-child(1),
@@ -670,7 +670,7 @@ header .header-btn:hover {
 
 #chat_box .chat_bubble .content sup {
   background-color: var(--grey-1);
-  color: var(--fg-0);
+  color: var(--fg-1);
 }
 
 #chat_box .chat_bubble .content sup:hover {
@@ -679,7 +679,7 @@ header .header-btn:hover {
 
 .message-info li .value {
   background-color: var(--bg-2);
-  color: var(--fg-0);
+  color: var(--fg-1);
   padding: 2px 5px;
   border-radius: 4px;
 }
@@ -867,7 +867,7 @@ dialog {
 .d-info-section-desc,
 .d-info-section,
 .ranked-c-adjust-title {
-  color: var(--fg-0);
+  color: var(--fg-1);
 }
 
 .filter-item.dropdown:not(.filter_item_icon, .filter_item_single):is(:focus-within, :hover) {
@@ -882,4 +882,40 @@ dialog {
 
 .k_ui_toggle_switch input:checked ~ .k_ui_toggle_switch_bar::after {
   background-color: var(--bg-0);
+}
+
+._0_d_info_ranking.k_ui_btn_group {
+  background-color: var(--bg-2);
+  color: var(--fg-1);
+}
+
+._0_d_info_ranking.k_ui_btn_group .k_ui_btn {
+  color: var(--fg-1);
+}
+
+._0_d_info_ranking.k_ui_btn_group #domain_rank_ban + .k_ui_btn {
+  color: var(--fg-1);
+}
+
+._0_d_info_ranking.k_ui_btn_group .k_ui_btn:hover,
+._0_d_info_ranking.k_ui_btn_group input:checked + .k_ui_btn {
+  background-color: var(--fg-1);
+  color: var(--bg-0);
+}
+
+._0_d_info_ranking.k_ui_btn_group #domain_rank_ban + .k_ui_btn:hover,
+._0_d_info_ranking.k_ui_btn_group #domain_rank_ban:checked + .k_ui_btn {
+  background-color: var(--br-red);
+  color: var(--bg-0);
+}
+
+._0_d_info_ranking.k_ui_btn_group #domain_rank_boost + .k_ui_btn:hover,
+._0_d_info_ranking.k_ui_btn_group #domain_rank_boost:checked + .k_ui_btn {
+  background-color: var(--br-blue);
+  color: var(--bg-0);
+}
+
+.ranking-note {
+  background-color: var(--bg-2);
+  color: var(--fg-1);
 }

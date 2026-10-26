@@ -75,7 +75,7 @@ def test_name_map_values():
         "subtext0": "grey-3",
         "overlay2": "grey-4",
         "subtext1": "grey-4",
-        "text": "fg-0",
+        "text": "fg-1",
         "pink": "magenta",
         "flamingo": "magenta",
         "rosewater": "orange",
@@ -99,3 +99,11 @@ def test_name_map_values():
 def test_text_contrast(variant, background):
     p = PALETTES[variant]
     assert contrast(p["fg-0"], p[background]) >= 4.5
+
+
+@pytest.mark.parametrize("variant", ["light", "dark"])
+@pytest.mark.parametrize("background", ["bg-0", "bg-1", "bg-2"])
+def test_body_text_contrast_on_surfaces(variant, background):
+    p = PALETTES[variant]
+    text = p[NAME_MAP["text"]]
+    assert contrast(text, p[background]) >= 4.5
