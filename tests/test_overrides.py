@@ -177,3 +177,40 @@ def test_index_note_text_is_readable(variant):
     background = resolve(rule_property(out, D_INFO_UNIQUE, "background-color"), palette)
     text = resolve(rule_property(out, D_INFO_UNIQUE, "color"), palette)
     assert contrast(text, background) >= 4.5
+
+
+SELECTED_FILTER = ".filter-item.dropdown:has(> ._0_selected)"
+
+
+def test_selected_filter_rule_appended():
+    out = convert(FIXTURE)
+    assert rule_property(out, SELECTED_FILTER, "background-color") == "var(--fg-1)"
+    assert rule_property(out, SELECTED_FILTER, "color") == "var(--bg-0)"
+
+
+@pytest.mark.parametrize("variant", ["light", "dark"])
+def test_selected_filter_text_is_readable(variant):
+    out = convert(FIXTURE)
+    palette = PALETTES[variant]
+    background = resolve(
+        rule_property(out, SELECTED_FILTER, "background-color"), palette
+    )
+    text = resolve(rule_property(out, SELECTED_FILTER, "color"), palette)
+    assert contrast(text, background) >= 4.5
+    assert contrast(background, palette["bg-0"]) >= 3
+
+
+FILTER_RESET = ".filter-item.dropdown .filter-reset"
+
+
+def test_filter_reset_follows_pill_text_colour():
+    out = convert(FIXTURE)
+    assert rule_property(out, FILTER_RESET, "color") == "inherit"
+
+
+SELECTED_FILTER_CARET = ".filter-item.dropdown:has(> ._0_selected) .caret"
+
+
+def test_selected_filter_caret_follows_pill_text_colour():
+    out = convert(FIXTURE)
+    assert rule_property(out, SELECTED_FILTER_CARET, "color") == "inherit"

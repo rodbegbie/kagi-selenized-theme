@@ -197,6 +197,19 @@ APPENDED_RULES = """
   background-color: var(--bg-2);
   color: var(--fg-1);
 }
+
+.filter-item.dropdown:has(> ._0_selected) {
+  background-color: var(--fg-1);
+  color: var(--bg-0);
+}
+
+.filter-item.dropdown .filter-reset {
+  color: inherit;
+}
+
+.filter-item.dropdown:has(> ._0_selected) .caret {
+  color: inherit;
+}
 """
 
 _PALETTE_DECL = re.compile(
