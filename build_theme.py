@@ -1,4 +1,6 @@
+import re
 from collections.abc import Sequence
+from pathlib import Path
 
 NAMES = [
     "bg-0",
@@ -137,3 +139,57 @@ def _palette(values: Sequence[str]) -> dict[str, str]:
 
 
 PALETTES = {"light": _palette(_LIGHT), "dark": _palette(_DARK)}
+
+
+_PALETTE_DECL = re.compile(
+    r"^(\s*)--(?:" + "|".join(NAME_MAP) + r"):\s*#[0-9a-fA-F]{6};\s*$"
+)
+_RULE_OPEN = re.compile(r"^\s*([^{}]*?)\s*\{\s*$")
+_DECL = re.compile(r"^\s*--([\w-]+)\s*:")
+_OLD_REF = re.compile(r"var\(--(" + "|".join(NAME_MAP) + r")(?=[,)])")
+_BASE_ALPHA = re.compile(r"rgba\(30, 30, 46, ([\d.]+)\)")
+
+
+def _variant(selector: str) -> str:
+    return "light" if selector == ":root" else "dark"
+
+
+def convert(css: str) -> str:
+    out: list[str] = []
+    selector = ""
+    in_palette_run = False
+    for line in css.split("\n"):
+        if match := _RULE_OPEN.match(line):
+            selector = match.group(1)
+        palette_line = _PALETTE_DECL.match(line)
+        if palette_line:
+            if not in_palette_run:
+                indent = palette_line.group(1)
+                out.extend(
+                    f"{indent}--{name}: {value};"
+                    for name, value in PALETTES[_variant(selector)].items()
+                )
+            in_palette_run = True
+            continue
+        in_palette_run = False
+        if (decl := _DECL.match(line)) and decl.group(1) in PALETTES["light"]:
+            raise ValueError(f"--{decl.group(1)} is already declared in the source")
+        line = _OLD_REF.sub(lambda m: f"var(--{NAME_MAP[m.group(1)]}", line)
+        line = _BASE_ALPHA.sub(
+            lambda m: (
+                f"color-mix(in srgb, var(--bg-0) {float(m.group(1)) * 100:g}%, transparent)"
+            ),
+            line,
+        )
+        out.append(line)
+    return "\n".join(out)
+
+
+def main(src: Path, dst: Path) -> None:
+    dst.write_text(convert(src.read_text(encoding="utf-8")), encoding="utf-8")
+
+
+if __name__ == "__main__":
+    import sys
+
+    main(Path(sys.argv[1]), Path(sys.argv[2]))
