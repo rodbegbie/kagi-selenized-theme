@@ -27,11 +27,17 @@ Selenized Dark:
 ## Install
 
 1. Copy the contents of [`kagi-selenized.css`](kagi-selenized.css).
-1. In Kagi, open **Settings**, then **Appearance**, then **Custom CSS**, and
-   choose **Change**.
-1. Paste the CSS, then choose **Save Changes**.
-1. Make sure **Enable Custom CSS** is on. It is in the Control Centre
-   (the top-right icon on the search page).
+1. Open Kagi's [Custom CSS settings](https://kagi.com/settings/custom_css).
+1. Paste the CSS into the text box.
+1. Set the **Theme Colour** options to the theme's default background
+   colours:
+
+   | Option | Value |
+   | --- | --- |
+   | For light theme | `#fbf3db` |
+   | For dark theme | `#103c48` |
+
+1. Make sure **Enable Custom CSS** is on, then choose **Save Changes**.
 
 Your existing custom CSS is replaced when you paste, so keep a copy of it
 first. Kagi offers `?no_css` on a search URL if you ever need to switch the
