@@ -192,6 +192,11 @@ APPENDED_RULES = """
   background-color: var(--bg-2);
   color: var(--fg-1);
 }
+
+.d-info-unique {
+  background-color: var(--bg-2);
+  color: var(--fg-1);
+}
 """
 
 _PALETTE_DECL = re.compile(

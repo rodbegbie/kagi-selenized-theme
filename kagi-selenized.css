@@ -937,3 +937,8 @@ circle.clock {
   background-color: var(--bg-2);
   color: var(--fg-1);
 }
+
+.d-info-unique {
+  background-color: var(--bg-2);
+  color: var(--fg-1);
+}

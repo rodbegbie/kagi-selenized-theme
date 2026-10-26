@@ -159,3 +159,21 @@ def test_domain_popup_block_selected_text_is_legible(variant):
     )
     text = resolve(rule_property(out, RANK_BAN_SELECTED, "color"), palette)
     assert contrast(text, background) >= 4.0
+
+
+D_INFO_UNIQUE = ".d-info-unique"
+
+
+def test_index_note_rule_appended():
+    out = convert(FIXTURE)
+    assert rule_property(out, D_INFO_UNIQUE, "background-color") == "var(--bg-2)"
+    assert rule_property(out, D_INFO_UNIQUE, "color") == "var(--fg-1)"
+
+
+@pytest.mark.parametrize("variant", ["light", "dark"])
+def test_index_note_text_is_readable(variant):
+    out = convert(FIXTURE)
+    palette = PALETTES[variant]
+    background = resolve(rule_property(out, D_INFO_UNIQUE, "background-color"), palette)
+    text = resolve(rule_property(out, D_INFO_UNIQUE, "color"), palette)
+    assert contrast(text, background) >= 4.5
