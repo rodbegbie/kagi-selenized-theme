@@ -32,9 +32,9 @@ COLOR_MIX = re.compile(
 
 
 def rule_property(css, selector, prop):
-    block = re.search(re.escape(selector) + r"\s*\{(.*?)\}", css, re.DOTALL)
-    assert block, f"no rule for {selector}"
-    return re.search(rf"{prop}:\s*([^;]+);", block.group(1)).group(1)
+    blocks = re.findall(re.escape(selector) + r"\s*\{(.*?)\}", css, re.DOTALL)
+    assert blocks, f"no rule for {selector}"
+    return re.search(rf"(?<![\w-]){prop}:\s*([^;]+);", blocks[-1]).group(1)
 
 
 def resolve(value, palette):
@@ -62,6 +62,28 @@ def test_dropdown_hover_text_is_readable(variant):
     background = resolve(rule_property(out, DROPDOWN_HOVER, "background"), palette)
     text = resolve(rule_property(out, DROPDOWN_HOVER, "color"), palette)
     assert contrast(text, background) >= 4.5
+
+
+TOGGLE_BAR = ".k_ui_toggle_switch input:checked ~ .k_ui_toggle_switch_bar"
+TOGGLE_KNOB = ".k_ui_toggle_switch input:checked ~ .k_ui_toggle_switch_bar::after"
+
+
+def test_enabled_toggle_rules_appended():
+    out = convert(FIXTURE)
+    assert rule_property(out, TOGGLE_BAR, "background") == "var(--br-green)"
+    assert rule_property(out, TOGGLE_BAR, "border-color") == "var(--br-green)"
+    assert rule_property(out, TOGGLE_KNOB, "background-color") == "var(--bg-0)"
+
+
+@pytest.mark.parametrize("variant", ["light", "dark"])
+@pytest.mark.parametrize("surface", ["bg-0", "bg-1"])
+def test_enabled_toggle_is_visible(variant, surface):
+    out = convert(FIXTURE)
+    palette = PALETTES[variant]
+    bar = resolve(rule_property(out, TOGGLE_BAR, "background"), palette)
+    knob = resolve(rule_property(out, TOGGLE_KNOB, "background-color"), palette)
+    assert contrast(bar, palette[surface]) >= 3
+    assert contrast(knob, bar) >= 3
 
 
 def test_unverified_dropdown_variables_left_alone():

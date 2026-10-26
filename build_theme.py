@@ -147,6 +147,15 @@ APPENDED_RULES = """
   background: color-mix(in srgb, var(--violet) 30%, var(--bg-0));
   color: var(--fg-1);
 }
+
+.k_ui_toggle_switch input:checked ~ .k_ui_toggle_switch_bar {
+  background: var(--br-green);
+  border-color: var(--br-green);
+}
+
+.k_ui_toggle_switch input:checked ~ .k_ui_toggle_switch_bar::after {
+  background-color: var(--bg-0);
+}
 """
 
 _PALETTE_DECL = re.compile(
