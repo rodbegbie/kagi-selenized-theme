@@ -8,9 +8,9 @@ This is an unofficial theme and is not affiliated with Kagi.
 
 ## Screenshots
 
-The same page in both modes, light above the line and dark below it:
+The same page in both modes, light on the left and dark on the right:
 
-![Selenized Light above, Dark below](docs/screenshots/capybara-light-dark.png)
+![Selenized Light left, Dark right](docs/screenshots/capybara-light-dark.png)
 
 The video and image thumbnails belong to their respective owners.
 
