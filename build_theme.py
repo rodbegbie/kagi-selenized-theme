@@ -239,8 +239,9 @@ def convert(css: str) -> str:
             ),
             line,
         )
+        line = line.replace("fill: rgb(150, 120, 120);", "fill: var(--dim);")
         out.append(line)
-    return _license_header() + "\n".join(out) + APPENDED_RULES
+    return _license_header() + "\n".join(out).rstrip("\n") + APPENDED_RULES
 
 
 def main(src: Path, dst: Path) -> None:

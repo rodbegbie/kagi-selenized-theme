@@ -79,32 +79,38 @@ Kagi theme and rewrites it for Selenized:
   if a new name would collide with one already declared.
 - It appends the overrides above and the licence header.
 
-The input is a gist by jcrabapple:
-<https://repo.jcrabapple.com/jcrabapple/82208449e52b434a8e695c8124fa3f79>,
-at revision `1ae117e4a5bc74ff7bbbf3496eef80e4dffe312b`. The output is
-byte-identical when regenerated from that revision.
+The input is `custom.css` from jcrabapple's repository:
+<https://github.com/jcrabapple/kagi-catppuccin-light-dark>, at commit
+`bf8f57941cf9c3c2fa4e41b2123637946bbbe66a`. The output is byte-identical
+when regenerated from that commit.
+
+The first version of this theme was converted from an earlier gist of the
+same Catppuccin theme. The script still reproduces that version exactly.
 
 To regenerate and test (needs [uv](https://docs.astral.sh/uv/) and
 Python 3.13 or later):
 
 ```bash
-git clone \
-  https://repo.jcrabapple.com/jcrabapple/82208449e52b434a8e695c8124fa3f79.git \
-  reference/gist
-uv run python build_theme.py \
-  reference/gist/kagi-catppuccin-mocha.css kagi-selenized.css
+git clone https://github.com/jcrabapple/kagi-catppuccin-light-dark.git \
+  reference/github
+git -C reference/github checkout bf8f57941cf9c3c2fa4e41b2123637946bbbe66a
+uv run python build_theme.py reference/github/custom.css kagi-selenized.css
 uv run pytest
 ```
 
-`reference/` is git-ignored. Without it, the test that runs against the real
-gist is skipped.
+`reference/` is git-ignored. The tests that run against a real input are
+skipped for any that is missing. They also run against the earlier gist,
+<https://repo.jcrabapple.com/jcrabapple/82208449e52b434a8e695c8124fa3f79>
+(revision `1ae117e4a5bc74ff7bbbf3496eef80e4dffe312b`), if it is cloned to
+`reference/gist`.
 
 ## Credits
 
 - [Selenized](https://github.com/jan-warchol/selenized) by Jan Warchoł.
 - The Catppuccin theme this was converted from, by jcrabapple (linked above).
-  The gist does not state a licence that I could find, so check with its
-  author before redistributing anything derived from it.
+  Neither the repository at that commit nor the earlier gist has a licence
+  file or a licence mentioned in its README that I could find, so check with
+  the author before redistributing anything derived from it.
 
 ## Licence
 

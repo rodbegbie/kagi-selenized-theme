@@ -5,7 +5,11 @@ import pytest
 
 from build_theme import NAME_MAP, PALETTES, convert
 
-REFERENCE = Path(__file__).parent.parent / "reference/gist/kagi-catppuccin-mocha.css"
+ROOT = Path(__file__).parent.parent
+REFERENCES = {
+    "github": ROOT / "reference/github/custom.css",
+    "gist": ROOT / "reference/gist/kagi-catppuccin-mocha.css",
+}
 
 FIXTURE = """\
 :root {
@@ -92,9 +96,32 @@ def test_name_collision_fails():
         convert(css)
 
 
-@pytest.mark.skipif(not REFERENCE.exists(), reason="reference gist not cloned")
-def test_real_reference():
-    source = REFERENCE.read_text(encoding="utf-8")
+def test_clock_fill_literal_uses_palette():
+    css = FIXTURE + "\ncircle.clock {\n  fill: rgb(150, 120, 120);\n}\n"
+    out = convert(css)
+    assert "fill: var(--dim);" in out
+    assert "rgb(150, 120, 120)" not in out
+
+
+def test_trailing_newline_in_input_adds_no_blank_lines():
+    assert "\n\n\n" not in convert(FIXTURE)
+
+
+@pytest.mark.parametrize(
+    "reference",
+    [
+        pytest.param(
+            path,
+            id=name,
+            marks=pytest.mark.skipif(
+                not path.exists(), reason=f"{name} reference not cloned"
+            ),
+        )
+        for name, path in REFERENCES.items()
+    ],
+)
+def test_real_reference(reference):
+    source = reference.read_text(encoding="utf-8")
     out = convert(source)
 
     assert not OLD_NAME.search(out)
