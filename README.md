@@ -12,17 +12,17 @@ This is an unofficial theme and is not affiliated with Kagi.
 
 The same page in both modes, light on the left and dark on the right:
 
-![Selenized Light left, Dark right](docs/screenshots/capybara-light-dark.png)
+![Selenized Light left, Dark right](docs/screenshots/tapir-light-dark.png)
 
-The video and image thumbnails belong to their respective owners.
+The news and image thumbnails belong to their respective owners.
 
 Selenized Light:
 
-![Capybara search, Selenized Light](docs/screenshots/capybara-light.png)
+![Malayan tapir search, Selenized Light](docs/screenshots/tapir-light.png)
 
 Selenized Dark:
 
-![Capybara search, Selenized Dark](docs/screenshots/capybara-dark.png)
+![Malayan tapir search, Selenized Dark](docs/screenshots/tapir-dark.png)
 
 ## Install
 
