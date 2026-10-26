@@ -8,6 +8,12 @@ This is an unofficial theme and is not affiliated with Kagi.
 
 ## Screenshots
 
+The same page in both modes, light above the line and dark below it:
+
+![Selenized Light above, Dark below](docs/screenshots/capybara-light-dark.png)
+
+The video and image thumbnails belong to their respective owners.
+
 Selenized Light:
 
 ![Capybara search, Selenized Light](docs/screenshots/capybara-light.png)
