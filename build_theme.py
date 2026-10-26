@@ -141,10 +141,13 @@ def _palette(values: Sequence[str]) -> dict[str, str]:
 PALETTES = {"light": _palette(_LIGHT), "dark": _palette(_DARK)}
 
 
-OVERRIDES = {
-    "dd-hover-bg": "color-mix(in srgb, var(--violet) 30%, var(--bg-0))",
-    "dd-hover-color": "var(--fg-1)",
+APPENDED_RULES = """
+
+.filter-item.dropdown:not(.filter_item_icon, .filter_item_single):is(:focus-within, :hover) {
+  background: color-mix(in srgb, var(--violet) 30%, var(--bg-0));
+  color: var(--fg-1);
 }
+"""
 
 _PALETTE_DECL = re.compile(
     r"^(\s*)--(?:" + "|".join(NAME_MAP) + r"):\s*#[0-9a-fA-F]{6};\s*$"
@@ -179,10 +182,6 @@ def convert(css: str) -> str:
         in_palette_run = False
         if (decl := _DECL.match(line)) and decl.group(1) in PALETTES["light"]:
             raise ValueError(f"--{decl.group(1)} is already declared in the source")
-        if decl and decl.group(1) in OVERRIDES:
-            indent = line[: len(line) - len(line.lstrip())]
-            out.append(f"{indent}--{decl.group(1)}: {OVERRIDES[decl.group(1)]};")
-            continue
         line = _OLD_REF.sub(lambda m: f"var(--{NAME_MAP[m.group(1)]}", line)
         line = _BASE_ALPHA.sub(
             lambda m: (
@@ -191,7 +190,7 @@ def convert(css: str) -> str:
             line,
         )
         out.append(line)
-    return "\n".join(out)
+    return "\n".join(out) + APPENDED_RULES
 
 
 def main(src: Path, dst: Path) -> None:

@@ -206,8 +206,8 @@
   --filter-dd-bg: var(--grey-2);
   --k-tooltip-bg: var(--background-color-sky);
   --k-tooltip-text: var(--fg-0);
-  --dd-hover-bg: color-mix(in srgb, var(--violet) 30%, var(--bg-0));
-  --dd-hover-color: var(--fg-1);
+  --dd-hover-bg: var(--violet);
+  --dd-hover-color: var(--fg-0);
   --dd-list-input-bg: var(--input-bg);
   --not-found-bubble-bg: var(--grey-1);
   --site_info_bg: var(--app-bg);
@@ -868,4 +868,9 @@ dialog {
 .d-info-section,
 .ranked-c-adjust-title {
   color: var(--fg-0);
+}
+
+.filter-item.dropdown:not(.filter_item_icon, .filter_item_single):is(:focus-within, :hover) {
+  background: color-mix(in srgb, var(--violet) 30%, var(--bg-0));
+  color: var(--fg-1);
 }
