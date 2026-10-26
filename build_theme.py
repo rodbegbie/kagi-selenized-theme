@@ -203,6 +203,11 @@ _OLD_REF = re.compile(r"var\(--(" + "|".join(NAME_MAP) + r")(?=[,)])")
 _BASE_ALPHA = re.compile(r"rgba\(30, 30, 46, ([\d.]+)\)")
 
 
+def _license_header() -> str:
+    text = Path(__file__).with_name("LICENSE").read_text(encoding="utf-8")
+    return f"/*\n{text.strip()}\n*/\n\n"
+
+
 def _variant(selector: str) -> str:
     return "light" if selector == ":root" else "dark"
 
@@ -235,7 +240,7 @@ def convert(css: str) -> str:
             line,
         )
         out.append(line)
-    return "\n".join(out) + APPENDED_RULES
+    return _license_header() + "\n".join(out) + APPENDED_RULES
 
 
 def main(src: Path, dst: Path) -> None:
