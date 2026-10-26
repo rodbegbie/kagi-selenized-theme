@@ -3,6 +3,8 @@
 A [Selenized](https://github.com/jan-warchol/selenized) theme for
 [Kagi](https://kagi.com) search, as a custom CSS file. It follows your
 system setting: Selenized Light in light mode, Selenized Dark in dark mode.
+It is converted from [jcrabapple's Catppuccin theme][jcrabapple] for Kagi,
+and this project would not exist without it. Thank you, jcrabapple!
 
 This is an unofficial theme and is not affiliated with Kagi.
 
@@ -121,3 +123,5 @@ skipped for any that is missing. They also run against the earlier gist,
 ## Licence
 
 [MIT No Attribution](LICENSE). The same text is at the top of the CSS file.
+
+[jcrabapple]: https://github.com/jcrabapple/kagi-catppuccin-light-dark
