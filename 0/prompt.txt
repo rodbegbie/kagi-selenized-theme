@@ -1,0 +1,11 @@
+Update the README installation instructions:
+1. Tell users the values they should set the Theme Colour options to (it should be the default background colours from the theme). [Image #1]
+2. Step 2 can be a direct link to the Custom CSS settings page: https://kagi.com/settings/custom_css
+
+---
+
+"Save Changes" is still there. It was just below my screenshot! [Image #2]
+
+---
+
+Great. Commit and push this change.
