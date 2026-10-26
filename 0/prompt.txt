@@ -1,0 +1,13 @@
+End session
+
+---
+
+same memories to your entire brain and push them too
+
+---
+
+add .DS_Store to .gitignore
+
+---
+
+commit that
