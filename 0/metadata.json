@@ -1,0 +1,81 @@
+{
+  "cli_version": "0.12.1",
+  "checkpoint_id": "01M5VD1GTR35BRR3GQ07NNCJJK",
+  "session_id": "3ac7afbb-cae3-43eb-8329-4b9edbf6cea8",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-26T06:05:56.316611Z",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    "README.md",
+    "docs/screenshots/capybara-dark.png",
+    "docs/screenshots/capybara-light-dark.png",
+    "docs/screenshots/capybara-light.png",
+    "docs/screenshots/tapir-dark.png",
+    "docs/screenshots/tapir-light-dark.png",
+    "docs/screenshots/tapir-light.png"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5-5",
+  "turn_id": "3aba5ea9d161",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 44,
+    "cache_creation_tokens": 98719,
+    "cache_read_tokens": 1613304,
+    "output_tokens": 7413,
+    "api_call_count": 22
+  },
+  "redaction": {
+    "replacements": 2,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 2,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-toolu_014zC6kzWCa4pSWBSfnyB7JG",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "claude-in-chrome"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "3aba5ea9d161",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 82,
+        "end": 83,
+        "entry_ids": [
+          "b3729d26-5188-476a-aab0-5f36871f19d1"
+        ],
+        "tool_use_id": "toolu_014zC6kzWCa4pSWBSfnyB7JG"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_014zC6kzWCa4pSWBSfnyB7JG"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: claude-in-chrome",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 2
+  }
+}
